@@ -3,9 +3,9 @@ using FourWords.Server.Services;
 
 namespace FourWords.Server.Hubs
 {
-    public class FourWordsHub(RoomService service) : Hub
+    public class FourWordsHub(IRoomService service) : Hub
     {
-        private readonly RoomService _roomService = service;
+        private readonly IRoomService _roomService = service;
 
         public override async Task OnConnectedAsync()
         {
