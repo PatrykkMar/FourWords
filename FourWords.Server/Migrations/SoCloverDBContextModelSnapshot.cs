@@ -201,6 +201,9 @@ namespace FourWords.Server.Migrations
                         .HasMaxLength(30)
                         .HasColumnType("nvarchar(30)");
 
+                    b.Property<Guid>("PlayerGuid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
