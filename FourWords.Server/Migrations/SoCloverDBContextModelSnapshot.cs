@@ -74,13 +74,13 @@ namespace FourWords.Server.Migrations
                     b.Property<int>("BoardId")
                         .HasColumnType("int");
 
-                    b.Property<int>("CardId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("CurrentRotation")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("GameRoomCardId")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsCorrect")
@@ -96,7 +96,9 @@ namespace FourWords.Server.Migrations
 
                     b.HasIndex("BoardId");
 
-                    b.HasIndex("CardId");
+                    b.HasIndex("GameRoomCardId")
+                        .IsUnique()
+                        .HasFilter("[GameRoomCardId] IS NOT NULL");
 
                     b.ToTable("BoardSlots");
                 });
@@ -1058,15 +1060,14 @@ namespace FourWords.Server.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("FourWords.Server.Models.Card", "Card")
-                        .WithMany()
-                        .HasForeignKey("CardId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                    b.HasOne("FourWords.Server.Models.GameRoomCard", "GameRoomCard")
+                        .WithOne()
+                        .HasForeignKey("FourWords.Server.Models.BoardSlot", "GameRoomCardId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Board");
 
-                    b.Navigation("Card");
+                    b.Navigation("GameRoomCard");
                 });
 
             modelBuilder.Entity("FourWords.Server.Models.GameRoom", b =>
