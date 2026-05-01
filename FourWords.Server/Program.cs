@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using FourWords.Server.Context;
+using FourWords.Server.Helpers;
 using FourWords.Server.Hubs;
 using FourWords.Server.Services;
 
@@ -29,6 +30,9 @@ builder.Services.AddSignalR();
 // Register application services
 builder.Services.AddTransient<IGameService, GameService>();
 builder.Services.AddTransient<IRoomService, RoomService>();
+
+//Helpers
+builder.Services.AddTransient<ICardManager, CardManager>();
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 builder.Services.AddDbContext<FourWordsDBContext>(options =>
