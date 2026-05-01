@@ -109,12 +109,6 @@ namespace FourWords.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("ModifiedAt")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("WordBottom")
                         .IsRequired()
                         .HasMaxLength(50)
@@ -138,6 +132,808 @@ namespace FourWords.Server.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Cards");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            WordBottom = "Wilk",
+                            WordLeft = "Grzyby",
+                            WordRight = "Jagoda",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            WordBottom = "Cukier",
+                            WordLeft = "Poranek",
+                            WordRight = "Kubek",
+                            WordTop = "Kawa"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            WordBottom = "Woda",
+                            WordLeft = "Słońce",
+                            WordRight = "Piasek",
+                            WordTop = "Plaża"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            WordBottom = "Tablica",
+                            WordLeft = "Książka",
+                            WordRight = "Uczeń",
+                            WordTop = "Szkoła"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            WordBottom = "Silnik",
+                            WordLeft = "Droga",
+                            WordRight = "Koło",
+                            WordTop = "Samochód"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            WordBottom = "Rakieta",
+                            WordLeft = "Planeta",
+                            WordRight = "Gwiazda",
+                            WordTop = "Kosmos"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            WordBottom = "Narty",
+                            WordLeft = "Lód",
+                            WordRight = "Śnieg",
+                            WordTop = "Zima"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            WordBottom = "Taniec",
+                            WordLeft = "Gitara",
+                            WordRight = "Radio",
+                            WordTop = "Muzyka"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            WordBottom = "Popcorn",
+                            WordLeft = "Ekran",
+                            WordRight = "Film",
+                            WordTop = "Kino"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            WordBottom = "Mąka",
+                            WordLeft = "Ciasto",
+                            WordRight = "Chleb",
+                            WordTop = "Piekarnia"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            WordBottom = "Bateria",
+                            WordLeft = "Aplikacja",
+                            WordRight = "Ekran",
+                            WordTop = "Telefon"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            WordBottom = "Plecak",
+                            WordLeft = "Wspinaczka",
+                            WordRight = "Szczyt",
+                            WordTop = "Góry"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            WordBottom = "Kelner",
+                            WordLeft = "Talerz",
+                            WordRight = "Menu",
+                            WordTop = "Restauracja"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            WordBottom = "Ziemia",
+                            WordLeft = "Łopata",
+                            WordRight = "Kwiat",
+                            WordTop = "Ogród"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            WordBottom = "Pilot",
+                            WordLeft = "Chmury",
+                            WordRight = "Bilet",
+                            WordTop = "Lotnisko"
+                        },
+                        new
+                        {
+                            Id = 16,
+                            WordBottom = "Mecz",
+                            WordLeft = "Kibic",
+                            WordRight = "Bramka",
+                            WordTop = "Piłka"
+                        },
+                        new
+                        {
+                            Id = 17,
+                            WordBottom = "Mech",
+                            WordLeft = "Sarna",
+                            WordRight = "Drzewo",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 18,
+                            WordBottom = "Aktor",
+                            WordLeft = "Kurtyna",
+                            WordRight = "Scena",
+                            WordTop = "Teatr"
+                        },
+                        new
+                        {
+                            Id = 19,
+                            WordBottom = "Budzik",
+                            WordLeft = "Minuta",
+                            WordRight = "Czas",
+                            WordTop = "Zegar"
+                        },
+                        new
+                        {
+                            Id = 20,
+                            WordBottom = "Stacja",
+                            WordLeft = "Wagon",
+                            WordRight = "Tor",
+                            WordTop = "Pociąg"
+                        },
+                        new
+                        {
+                            Id = 21,
+                            WordBottom = "Statek",
+                            WordLeft = "Sól",
+                            WordRight = "Fala",
+                            WordTop = "Morze"
+                        },
+                        new
+                        {
+                            Id = 22,
+                            WordBottom = "Garnek",
+                            WordLeft = "Przyprawa",
+                            WordRight = "Nóż",
+                            WordTop = "Kuchnia"
+                        },
+                        new
+                        {
+                            Id = 23,
+                            WordBottom = "Kawa",
+                            WordLeft = "Fotel",
+                            WordRight = "Laptop",
+                            WordTop = "Biuro"
+                        },
+                        new
+                        {
+                            Id = 24,
+                            WordBottom = "Sen",
+                            WordLeft = "Gwiazdy",
+                            WordRight = "Noc",
+                            WordTop = "Księżyc"
+                        },
+                        new
+                        {
+                            Id = 25,
+                            WordBottom = "Wędka",
+                            WordLeft = "Kajak",
+                            WordRight = "Most",
+                            WordTop = "Rzeka"
+                        },
+                        new
+                        {
+                            Id = 26,
+                            WordBottom = "Karma",
+                            WordLeft = "Spacer",
+                            WordRight = "Smycz",
+                            WordTop = "Pies"
+                        },
+                        new
+                        {
+                            Id = 27,
+                            WordBottom = "Mleko",
+                            WordLeft = "Pazur",
+                            WordRight = "Mysz",
+                            WordTop = "Kot"
+                        },
+                        new
+                        {
+                            Id = 28,
+                            WordBottom = "Recepta",
+                            WordLeft = "Syrop",
+                            WordRight = "Lek",
+                            WordTop = "Apteka"
+                        },
+                        new
+                        {
+                            Id = 29,
+                            WordBottom = "Popiół",
+                            WordLeft = "Ogień",
+                            WordRight = "Lawa",
+                            WordTop = "Wulkan"
+                        },
+                        new
+                        {
+                            Id = 30,
+                            WordBottom = "Wielbłąd",
+                            WordLeft = "Oaza",
+                            WordRight = "Piach",
+                            WordTop = "Pustynia"
+                        },
+                        new
+                        {
+                            Id = 31,
+                            WordBottom = "Owoce",
+                            WordLeft = "Trawa",
+                            WordRight = "Koc",
+                            WordTop = "Piknik"
+                        },
+                        new
+                        {
+                            Id = 32,
+                            WordBottom = "Żagiel",
+                            WordLeft = "Kapitan",
+                            WordRight = "Kotwica",
+                            WordTop = "Statek"
+                        },
+                        new
+                        {
+                            Id = 33,
+                            WordBottom = "Łóżko",
+                            WordLeft = "Karetka",
+                            WordRight = "Lekarz",
+                            WordTop = "Szpital"
+                        },
+                        new
+                        {
+                            Id = 34,
+                            WordBottom = "Nora",
+                            WordLeft = "Ogon",
+                            WordRight = "Lis",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 35,
+                            WordBottom = "Wieszak",
+                            WordLeft = "Lustro",
+                            WordRight = "Buty",
+                            WordTop = "Szafa"
+                        },
+                        new
+                        {
+                            Id = 36,
+                            WordBottom = "Drzwi",
+                            WordLeft = "Dom",
+                            WordRight = "Zamek",
+                            WordTop = "Klucz"
+                        },
+                        new
+                        {
+                            Id = 37,
+                            WordBottom = "Autor",
+                            WordLeft = "Tytuł",
+                            WordRight = "Kartka",
+                            WordTop = "Książka"
+                        },
+                        new
+                        {
+                            Id = 38,
+                            WordBottom = "Talerz",
+                            WordLeft = "Warzywa",
+                            WordRight = "Łyżka",
+                            WordTop = "Zupa"
+                        },
+                        new
+                        {
+                            Id = 39,
+                            WordBottom = "Kałuża",
+                            WordLeft = "Chmura",
+                            WordRight = "Parasol",
+                            WordTop = "Deszcz"
+                        },
+                        new
+                        {
+                            Id = 40,
+                            WordBottom = "Drewno",
+                            WordLeft = "Ciepło",
+                            WordRight = "Dym",
+                            WordTop = "Ogień"
+                        },
+                        new
+                        {
+                            Id = 41,
+                            WordBottom = "Miód",
+                            WordLeft = "Gawra",
+                            WordRight = "Niedźwiedź",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 42,
+                            WordBottom = "Afryka",
+                            WordLeft = "Ucho",
+                            WordRight = "Trąba",
+                            WordTop = "Słoń"
+                        },
+                        new
+                        {
+                            Id = 43,
+                            WordBottom = "Jajko",
+                            WordLeft = "Skrzydło",
+                            WordRight = "Gniazdo",
+                            WordTop = "Ptak"
+                        },
+                        new
+                        {
+                            Id = 44,
+                            WordBottom = "Obraz",
+                            WordLeft = "Sztaluga",
+                            WordRight = "Pędzel",
+                            WordTop = "Farba"
+                        },
+                        new
+                        {
+                            Id = 45,
+                            WordBottom = "Łańcuch",
+                            WordLeft = "Pedał",
+                            WordRight = "Kask",
+                            WordTop = "Rower"
+                        },
+                        new
+                        {
+                            Id = 46,
+                            WordBottom = "Grzebień",
+                            WordLeft = "Lustro",
+                            WordRight = "Nożyczki",
+                            WordTop = "Fryzjer"
+                        },
+                        new
+                        {
+                            Id = 47,
+                            WordBottom = "Okulary",
+                            WordLeft = "Chlor",
+                            WordRight = "Ręcznik",
+                            WordTop = "Basen"
+                        },
+                        new
+                        {
+                            Id = 48,
+                            WordBottom = "Noc",
+                            WordLeft = "Dziupla",
+                            WordRight = "Sowa",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 49,
+                            WordBottom = "Kanapka",
+                            WordLeft = "Pizza",
+                            WordRight = "Dziury",
+                            WordTop = "Ser"
+                        },
+                        new
+                        {
+                            Id = 50,
+                            WordBottom = "Kwiat",
+                            WordLeft = "Ul",
+                            WordRight = "Pszczoła",
+                            WordTop = "Miód"
+                        },
+                        new
+                        {
+                            Id = 51,
+                            WordBottom = "Latawiec",
+                            WordLeft = "Liście",
+                            WordRight = "Wiatrak",
+                            WordTop = "Wiatr"
+                        },
+                        new
+                        {
+                            Id = 52,
+                            WordBottom = "Znaczek",
+                            WordLeft = "Paczka",
+                            WordRight = "List",
+                            WordTop = "Poczta"
+                        },
+                        new
+                        {
+                            Id = 53,
+                            WordBottom = "Rzeźba",
+                            WordLeft = "Wystawa",
+                            WordRight = "Sztuka",
+                            WordTop = "Muzeum"
+                        },
+                        new
+                        {
+                            Id = 54,
+                            WordBottom = "Korona",
+                            WordLeft = "Rycerz",
+                            WordRight = "Król",
+                            WordTop = "Zamek"
+                        },
+                        new
+                        {
+                            Id = 55,
+                            WordBottom = "Mucha",
+                            WordLeft = "Noga",
+                            WordRight = "Sieć",
+                            WordTop = "Pająk"
+                        },
+                        new
+                        {
+                            Id = 56,
+                            WordBottom = "Olej",
+                            WordLeft = "Brama",
+                            WordRight = "Narzędzia",
+                            WordTop = "Garaż"
+                        },
+                        new
+                        {
+                            Id = 57,
+                            WordBottom = "Trzcina",
+                            WordLeft = "Komar",
+                            WordRight = "Łódka",
+                            WordTop = "Jezioro"
+                        },
+                        new
+                        {
+                            Id = 58,
+                            WordBottom = "Sól",
+                            WordLeft = "Ziemniak",
+                            WordRight = "Ketchup",
+                            WordTop = "Frytki"
+                        },
+                        new
+                        {
+                            Id = 59,
+                            WordBottom = "Banan",
+                            WordLeft = "Liana",
+                            WordRight = "Małpa",
+                            WordTop = "Dżungla"
+                        },
+                        new
+                        {
+                            Id = 60,
+                            WordBottom = "Woda",
+                            WordLeft = "Gąbka",
+                            WordRight = "Mydło",
+                            WordTop = "Prysznic"
+                        },
+                        new
+                        {
+                            Id = 61,
+                            WordBottom = "Lizak",
+                            WordLeft = "Tort",
+                            WordRight = "Czekolada",
+                            WordTop = "Słodycze"
+                        },
+                        new
+                        {
+                            Id = 62,
+                            WordBottom = "Kocioł",
+                            WordLeft = "Ogień",
+                            WordRight = "Diabeł",
+                            WordTop = "Piekło"
+                        },
+                        new
+                        {
+                            Id = 63,
+                            WordBottom = "Klatka",
+                            WordLeft = "Bilet",
+                            WordRight = "Lew",
+                            WordTop = "ZOO"
+                        },
+                        new
+                        {
+                            Id = 64,
+                            WordBottom = "Chmura",
+                            WordLeft = "Skrzydła",
+                            WordRight = "Anioł",
+                            WordTop = "Niebo"
+                        },
+                        new
+                        {
+                            Id = 65,
+                            WordBottom = "Siano",
+                            WordLeft = "Farma",
+                            WordRight = "Pole",
+                            WordTop = "Traktor"
+                        },
+                        new
+                        {
+                            Id = 66,
+                            WordBottom = "Flash",
+                            WordLeft = "Uśmiech",
+                            WordRight = "Zdjęcie",
+                            WordTop = "Aparat"
+                        },
+                        new
+                        {
+                            Id = 67,
+                            WordBottom = "Mapa",
+                            WordLeft = "Wyspa",
+                            WordRight = "Złoto",
+                            WordTop = "Skarb"
+                        },
+                        new
+                        {
+                            Id = 68,
+                            WordBottom = "Namiot",
+                            WordLeft = "Akrobata",
+                            WordRight = "Klaun",
+                            WordTop = "Cyrk"
+                        },
+                        new
+                        {
+                            Id = 69,
+                            WordBottom = "Zimno",
+                            WordLeft = "Gałka",
+                            WordRight = "Wafel",
+                            WordTop = "Lody"
+                        },
+                        new
+                        {
+                            Id = 70,
+                            WordBottom = "Kura",
+                            WordLeft = "Stodoła",
+                            WordRight = "Krowa",
+                            WordTop = "Wieś"
+                        },
+                        new
+                        {
+                            Id = 71,
+                            WordBottom = "Kora",
+                            WordLeft = "Stukanie",
+                            WordRight = "Dzięcioł",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 72,
+                            WordBottom = "Widok",
+                            WordLeft = "Poręcz",
+                            WordRight = "Kwiaty",
+                            WordTop = "Balkon"
+                        },
+                        new
+                        {
+                            Id = 73,
+                            WordBottom = "Klawiatura",
+                            WordLeft = "Monitor",
+                            WordRight = "Myszka",
+                            WordTop = "Komputer"
+                        },
+                        new
+                        {
+                            Id = 74,
+                            WordBottom = "Czosnek",
+                            WordLeft = "Ząb",
+                            WordRight = "Krew",
+                            WordTop = "Wampir"
+                        },
+                        new
+                        {
+                            Id = 75,
+                            WordBottom = "Armata",
+                            WordLeft = "Rum",
+                            WordRight = "Papuga",
+                            WordTop = "Piraci"
+                        },
+                        new
+                        {
+                            Id = 76,
+                            WordBottom = "Żołnierz",
+                            WordLeft = "Hełm",
+                            WordRight = "Czołg",
+                            WordTop = "Wojna"
+                        },
+                        new
+                        {
+                            Id = 77,
+                            WordBottom = "Igły",
+                            WordLeft = "Jabłko",
+                            WordRight = "Jeż",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 78,
+                            WordBottom = "Gniazdo",
+                            WordLeft = "Śniadanie",
+                            WordRight = "Kura",
+                            WordTop = "Jajko"
+                        },
+                        new
+                        {
+                            Id = 79,
+                            WordBottom = "Głośnik",
+                            WordLeft = "Piosenka",
+                            WordRight = "Antena",
+                            WordTop = "Radio"
+                        },
+                        new
+                        {
+                            Id = 80,
+                            WordBottom = "Poduszka",
+                            WordLeft = "Piżama",
+                            WordRight = "Kołdra",
+                            WordTop = "Łóżko"
+                        },
+                        new
+                        {
+                            Id = 81,
+                            WordBottom = "Miód",
+                            WordLeft = "Żądło",
+                            WordRight = "Ul",
+                            WordTop = "Pszczoła"
+                        },
+                        new
+                        {
+                            Id = 82,
+                            WordBottom = "Komin",
+                            WordLeft = "Popiół",
+                            WordRight = "Ogień",
+                            WordTop = "Kominek"
+                        },
+                        new
+                        {
+                            Id = 83,
+                            WordBottom = "Kilof",
+                            WordLeft = "Winda",
+                            WordRight = "Węgiel",
+                            WordTop = "Kopalnia"
+                        },
+                        new
+                        {
+                            Id = 84,
+                            WordBottom = "Blacha",
+                            WordLeft = "Zapach",
+                            WordRight = "Piec",
+                            WordTop = "Piekarnik"
+                        },
+                        new
+                        {
+                            Id = 85,
+                            WordBottom = "Szyba",
+                            WordLeft = "Woda",
+                            WordRight = "Ryba",
+                            WordTop = "Akwarium"
+                        },
+                        new
+                        {
+                            Id = 86,
+                            WordBottom = "Szklanka",
+                            WordLeft = "Biały",
+                            WordRight = "Krowa",
+                            WordTop = "Mleko"
+                        },
+                        new
+                        {
+                            Id = 87,
+                            WordBottom = "Kuchnia",
+                            WordLeft = "Słony",
+                            WordRight = "Pieprz",
+                            WordTop = "Sól"
+                        },
+                        new
+                        {
+                            Id = 88,
+                            WordBottom = "Orzech",
+                            WordLeft = "Dziupla",
+                            WordRight = "Wiewiórka",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 89,
+                            WordBottom = "Meta",
+                            WordLeft = "Pot",
+                            WordRight = "Buty",
+                            WordTop = "Bieg"
+                        },
+                        new
+                        {
+                            Id = 90,
+                            WordBottom = "Okulary",
+                            WordLeft = "Lato",
+                            WordRight = "Dzień",
+                            WordTop = "Słońce"
+                        },
+                        new
+                        {
+                            Id = 91,
+                            WordBottom = "Nóż",
+                            WordLeft = "Skórka",
+                            WordRight = "Masło",
+                            WordTop = "Chleb"
+                        },
+                        new
+                        {
+                            Id = 92,
+                            WordBottom = "Regał",
+                            WordLeft = "Czytanie",
+                            WordRight = "Biblioteka",
+                            WordTop = "Książka"
+                        },
+                        new
+                        {
+                            Id = 93,
+                            WordBottom = "Skrzydło",
+                            WordLeft = "Silnik",
+                            WordRight = "Niebo",
+                            WordTop = "Samolot"
+                        },
+                        new
+                        {
+                            Id = 94,
+                            WordBottom = "Spacer",
+                            WordLeft = "Ptaki",
+                            WordRight = "Ścieżka",
+                            WordTop = "Las"
+                        },
+                        new
+                        {
+                            Id = 95,
+                            WordBottom = "Buty",
+                            WordLeft = "Mgła",
+                            WordRight = "Szlak",
+                            WordTop = "Góra"
+                        },
+                        new
+                        {
+                            Id = 96,
+                            WordBottom = "Parasol",
+                            WordLeft = "Upał",
+                            WordRight = "Piach",
+                            WordTop = "Morze"
+                        },
+                        new
+                        {
+                            Id = 97,
+                            WordBottom = "Płot",
+                            WordLeft = "Dach",
+                            WordRight = "Ogród",
+                            WordTop = "Dom"
+                        },
+                        new
+                        {
+                            Id = 98,
+                            WordBottom = "Ryba",
+                            WordLeft = "Brzeg",
+                            WordRight = "Woda",
+                            WordTop = "Rzeka"
+                        },
+                        new
+                        {
+                            Id = 99,
+                            WordBottom = "Bukiet",
+                            WordLeft = "Wazon",
+                            WordRight = "Róża",
+                            WordTop = "Kwiaciarnia"
+                        },
+                        new
+                        {
+                            Id = 100,
+                            WordBottom = "Ulica",
+                            WordLeft = "Sklep",
+                            WordRight = "Blok",
+                            WordTop = "Miasto"
+                        });
                 });
 
             modelBuilder.Entity("FourWords.Server.Models.GameRoom", b =>
@@ -170,6 +966,35 @@ namespace FourWords.Server.Migrations
                     b.HasIndex("ActivePlayerId");
 
                     b.ToTable("GameRooms");
+                });
+
+            modelBuilder.Entity("FourWords.Server.Models.GameRoomCard", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("CardId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("GameRoomId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CardId");
+
+                    b.HasIndex("GameRoomId");
+
+                    b.ToTable("GameRoomCards");
                 });
 
             modelBuilder.Entity("FourWords.Server.Models.Player", b =>
@@ -254,6 +1079,25 @@ namespace FourWords.Server.Migrations
                     b.Navigation("ActivePlayer");
                 });
 
+            modelBuilder.Entity("FourWords.Server.Models.GameRoomCard", b =>
+                {
+                    b.HasOne("FourWords.Server.Models.Card", "Card")
+                        .WithMany("GameRoomCards")
+                        .HasForeignKey("CardId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("FourWords.Server.Models.GameRoom", "GameRoom")
+                        .WithMany("GameRoomCards")
+                        .HasForeignKey("GameRoomId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Card");
+
+                    b.Navigation("GameRoom");
+                });
+
             modelBuilder.Entity("FourWords.Server.Models.Player", b =>
                 {
                     b.HasOne("FourWords.Server.Models.GameRoom", "GameRoom")
@@ -270,8 +1114,15 @@ namespace FourWords.Server.Migrations
                     b.Navigation("BoardSlots");
                 });
 
+            modelBuilder.Entity("FourWords.Server.Models.Card", b =>
+                {
+                    b.Navigation("GameRoomCards");
+                });
+
             modelBuilder.Entity("FourWords.Server.Models.GameRoom", b =>
                 {
+                    b.Navigation("GameRoomCards");
+
                     b.Navigation("Players");
                 });
 
