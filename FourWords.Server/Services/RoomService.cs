@@ -1,20 +1,22 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using FourWords.Server.Context;
+using FourWords.Server.Helpers;
 using FourWords.Server.Models;
-using FourWords.Server.Models.Responses;
+using FourWords.Server.Models.DTOs;
 
 namespace FourWords.Server.Services
 {
     public interface IRoomService
     {
         Task<GameRoom> CreateRoomAsync();
-        Task<RoomDataDto> JoinRoomAsync(string roomCode, string playerName, string connectionId, Guid playerGuid);
-        Task<RoomDataDto?> LeaveRoomAsync(string connectionId);
+        Task<RoomDataDTO> JoinRoomAsync(string roomCode, string playerName, string connectionId, Guid playerGuid);
+        Task<RoomDataDTO?> LeaveRoomAsync(string connectionId);
     }
 
-    public class RoomService(FourWordsDBContext context) : IRoomService
+    public class RoomService(FourWordsDBContext context, ICardManager cardManager) : IRoomService
     {
         private readonly FourWordsDBContext _context = context;
+        private readonly ICardManager _cardManager = cardManager;   
         private static readonly Random _random = new();
 
         public async Task<GameRoom> CreateRoomAsync()
@@ -40,14 +42,14 @@ namespace FourWords.Server.Services
             return room;
         }
 
-        public async Task<RoomDataDto> JoinRoomAsync(string roomCode, string playerName, string connectionId, Guid playerGuid)
+        public async Task<RoomDataDTO> JoinRoomAsync(string roomCode, string playerName, string connectionId, Guid playerGuid)
         {
             var room = await _context.GameRooms
                 .Include(r => r.Players)
                 .FirstOrDefaultAsync(r => r.RoomCode == roomCode.ToUpper());
 
             if (room == null) throw new Exception("Room does not exist");
-            if (room.Status != GameStatus.Lobby) throw new Exception("Game just started");
+            if (room.Status != GameStatus.Lobby) throw new Exception("Game just started"); //TODO: Possibility to join a game in progress
             if (room.Players.Count >= 6) throw new Exception("Room is full");
 
             var player = new Player
@@ -62,13 +64,13 @@ namespace FourWords.Server.Services
 
             room.Players.Add(player);
 
-            var roomData = new RoomDataDto(room);
+            var roomData = new RoomDataDTO(room);
 
             await _context.SaveChangesAsync();
             return roomData;
         }
 
-        public async Task<RoomDataDto?> LeaveRoomAsync(string connectionId)
+        public async Task<RoomDataDTO?> LeaveRoomAsync(string connectionId)
         {
             var player = await _context.Players
                 .Include(p => p.GameRoom)
@@ -91,7 +93,7 @@ namespace FourWords.Server.Services
 
             await _context.SaveChangesAsync();
 
-            var roomData = new RoomDataDto(room);
+            var roomData = new RoomDataDTO(room);
             return roomData;
         }
 
