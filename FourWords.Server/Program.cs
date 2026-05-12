@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using FourWords.Server.Context;
+using FourWords.Server.Filters;
 using FourWords.Server.Helpers;
 using FourWords.Server.Hubs;
 using FourWords.Server.Services;
@@ -26,7 +28,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddSignalR()
+builder.Services.AddSignalR(options => options.AddFilter<HubErrorFilter>())
     .AddJsonProtocol(options => {
         options.PayloadSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     });
