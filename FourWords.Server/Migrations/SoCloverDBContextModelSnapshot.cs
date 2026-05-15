@@ -37,6 +37,9 @@ namespace FourWords.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<bool>("IsActive")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LeftClue")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
@@ -77,9 +80,6 @@ namespace FourWords.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CurrentRotation")
-                        .HasColumnType("int");
-
                     b.Property<int?>("GameRoomCardId")
                         .HasColumnType("int");
 
@@ -88,9 +88,6 @@ namespace FourWords.Server.Migrations
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("PositionIndex")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -984,6 +981,9 @@ namespace FourWords.Server.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("CurrentRotation")
+                        .HasColumnType("int");
+
                     b.Property<int>("GameRoomId")
                         .HasColumnType("int");
 
@@ -992,6 +992,9 @@ namespace FourWords.Server.Migrations
 
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<int>("PositionIndex")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
