@@ -25,7 +25,7 @@ namespace FourWords.Server.Models
 
         public GameStatus Status { get; set; }
 
-        public int? ActivePlayerId { get; set; }
+        public int? CheckedPlayerId { get; set; }
 
 
 

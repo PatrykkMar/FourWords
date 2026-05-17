@@ -26,7 +26,7 @@ namespace FourWords.Server.Context
             modelBuilder.Entity<GameRoom>()
                 .HasOne(g => g.ActivePlayer)
                 .WithMany()
-                .HasForeignKey(g => g.ActivePlayerId)
+                .HasForeignKey(g => g.CheckedPlayerId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<GameRoomCard>().HasOne(grc => grc.GameRoom)

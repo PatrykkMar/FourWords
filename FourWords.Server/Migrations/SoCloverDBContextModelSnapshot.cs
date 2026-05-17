@@ -961,7 +961,7 @@ namespace FourWords.Server.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("ActivePlayerId")
+                    b.Property<int?>("CheckedPlayerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("CreatedAt")
@@ -980,7 +980,7 @@ namespace FourWords.Server.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ActivePlayerId");
+                    b.HasIndex("CheckedPlayerId");
 
                     b.ToTable("GameRooms");
                 });
@@ -1106,7 +1106,7 @@ namespace FourWords.Server.Migrations
                 {
                     b.HasOne("FourWords.Server.Models.Player", "ActivePlayer")
                         .WithMany()
-                        .HasForeignKey("ActivePlayerId")
+                        .HasForeignKey("CheckedPlayerId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("ActivePlayer");
