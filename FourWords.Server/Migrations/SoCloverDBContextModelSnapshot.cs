@@ -83,9 +83,6 @@ namespace FourWords.Server.Migrations
                     b.Property<int?>("GameRoomCardId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("GameRoomCardId1")
-                        .HasColumnType("int");
-
                     b.Property<bool>("IsCorrect")
                         .HasColumnType("bit");
 
@@ -109,11 +106,9 @@ namespace FourWords.Server.Migrations
                         .IsUnique()
                         .HasFilter("[GameRoomCardId] IS NOT NULL");
 
-                    b.HasIndex("GameRoomCardId1")
+                    b.HasIndex("TargetGameRoomCardId")
                         .IsUnique()
-                        .HasFilter("[GameRoomCardId1] IS NOT NULL");
-
-                    b.HasIndex("TargetGameRoomCardId");
+                        .HasFilter("[TargetGameRoomCardId] IS NOT NULL");
 
                     b.ToTable("BoardSlots");
                 });
@@ -982,6 +977,9 @@ namespace FourWords.Server.Migrations
 
                     b.HasIndex("CheckedPlayerId");
 
+                    b.HasIndex("RoomCode")
+                        .IsUnique();
+
                     b.ToTable("GameRooms");
                 });
 
@@ -1057,7 +1055,12 @@ namespace FourWords.Server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ConnectionId");
+
                     b.HasIndex("GameRoomId");
+
+                    b.HasIndex("PlayerGuid")
+                        .IsUnique();
 
                     b.ToTable("Players");
                 });
@@ -1078,21 +1081,17 @@ namespace FourWords.Server.Migrations
                     b.HasOne("FourWords.Server.Models.Board", "Board")
                         .WithMany("BoardSlots")
                         .HasForeignKey("BoardId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("FourWords.Server.Models.GameRoomCard", "GameRoomCard")
-                        .WithOne()
+                        .WithOne("BoardSlot")
                         .HasForeignKey("FourWords.Server.Models.BoardSlot", "GameRoomCardId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("FourWords.Server.Models.GameRoomCard", null)
-                        .WithOne("BoardSlot")
-                        .HasForeignKey("FourWords.Server.Models.BoardSlot", "GameRoomCardId1");
-
                     b.HasOne("FourWords.Server.Models.GameRoomCard", "TargetGameRoomCard")
-                        .WithMany("TargetBoardSlots")
-                        .HasForeignKey("TargetGameRoomCardId")
+                        .WithOne("TargetBoardSlot")
+                        .HasForeignKey("FourWords.Server.Models.BoardSlot", "TargetGameRoomCardId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Board");
@@ -1104,12 +1103,12 @@ namespace FourWords.Server.Migrations
 
             modelBuilder.Entity("FourWords.Server.Models.GameRoom", b =>
                 {
-                    b.HasOne("FourWords.Server.Models.Player", "ActivePlayer")
+                    b.HasOne("FourWords.Server.Models.Player", "CheckedPlayer")
                         .WithMany()
                         .HasForeignKey("CheckedPlayerId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.Navigation("ActivePlayer");
+                    b.Navigation("CheckedPlayer");
                 });
 
             modelBuilder.Entity("FourWords.Server.Models.GameRoomCard", b =>
@@ -1163,7 +1162,7 @@ namespace FourWords.Server.Migrations
                 {
                     b.Navigation("BoardSlot");
 
-                    b.Navigation("TargetBoardSlots");
+                    b.Navigation("TargetBoardSlot");
                 });
 
             modelBuilder.Entity("FourWords.Server.Models.Player", b =>
