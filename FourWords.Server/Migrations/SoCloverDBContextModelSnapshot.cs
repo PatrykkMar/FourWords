@@ -1081,7 +1081,7 @@ namespace FourWords.Server.Migrations
                     b.HasOne("FourWords.Server.Models.Board", "Board")
                         .WithMany("BoardSlots")
                         .HasForeignKey("BoardId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("FourWords.Server.Models.GameRoomCard", "GameRoomCard")
