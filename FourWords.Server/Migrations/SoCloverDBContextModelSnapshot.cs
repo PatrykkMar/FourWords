@@ -965,6 +965,9 @@ namespace FourWords.Server.Migrations
                     b.Property<DateTime?>("ModifiedAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("NumberOfAttempts")
+                        .HasColumnType("int");
+
                     b.Property<string>("RoomCode")
                         .IsRequired()
                         .HasMaxLength(4)
@@ -1045,9 +1048,6 @@ namespace FourWords.Server.Migrations
 
                     b.Property<Guid>("PlayerGuid")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Score")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 

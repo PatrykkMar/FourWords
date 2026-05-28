@@ -57,8 +57,7 @@ namespace FourWords.Server.Services
                 Name = playerName,
                 GameRoom = room,
                 PlayerGuid = playerGuid,
-                IsReady = false,
-                Score = 0
+                IsReady = false
             };
 
             room.Players.Add(player);
