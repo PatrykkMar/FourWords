@@ -154,8 +154,10 @@ app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Four Words API V1");
-    c.RoutePrefix = string.Empty;
+    c.RoutePrefix = "swagger"; 
 });
+
+app.UseStaticFiles();
 
 app.UseRouting();
 
@@ -164,6 +166,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 app.MapHub<FourWordsHub>("/fourwordshub");
+
+app.MapFallbackToFile("index.html");
 
 app.Run();
 
