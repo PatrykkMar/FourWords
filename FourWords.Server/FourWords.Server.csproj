@@ -50,5 +50,24 @@
     <None Include="wwwroot\dist\icons.svg" />
     <None Include="wwwroot\dist\index.html" />
   </ItemGroup>
+	
+	<Target Name="BuildAndCopyReactFrontend" AfterTargets="ComputeFilesToPublish;Build">
+		<PropertyGroup>
+			<ReactBuildScript Condition="'$(Configuration)' == 'Release'">build:prod</ReactBuildScript>
+			<ReactBuildScript Condition="'$(ReactBuildScript)' == ''">build:dev</ReactBuildScript>
+		</PropertyGroup>
+
+		<Message Importance="high" Text="Building React project (fourwords.client) using '$(ReactBuildScript)'..." />
+
+		<Exec WorkingDirectory="..\fourwords.client" Command="npm run $(ReactBuildScript)" />
+
+		<Message Importance="high" Text="Copying files from fourwords.client/dist to wwwroot..." />
+		<ItemGroup>
+			<ReactDistFiles Include="..\fourwords.client\dist\**" />
+		</ItemGroup>
+		<Copy SourceFiles="@(ReactDistFiles)"
+			  DestinationFiles="@(ReactDistFiles->'wwwroot\%(RecursiveDir)%(Filename)%(Extension)')"
+			  SkipUnchangedFiles="true" />
+	</Target>
 
 </Project>
